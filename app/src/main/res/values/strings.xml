@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Plasma Donor App</string>
     <string name="phone_number">Phone Number</string>
+    <string name="enter_the_mobile_number">Enter the Mobile Number</string>
+    <string name="login">Login</string>
+    <string name="app_logo">App Logo</string>
+    <string name="proceed">Proceed</string>
+    <string name="homescreen_activity">HomeScreen Activity</string>
 </resources>
