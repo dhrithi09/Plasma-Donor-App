@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Plasma Donor App</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="enter_the_mobile_number">Enter the Mobile Number</string>
+    <string name="login">Login</string>
+    <string name="app_logo">App Logo</string>
+    <string name="proceed">Proceed</string>
+    <string name="homescreen_activity">HomeScreen Activity</string>
+    <string name="verify">Verify</string>
+    <string name="enter_otp">Enter OTP (123)</string>
+    <string name="enter_otp_sent_on_your_mobile">Enter OTP sent on your mobile</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="verify_screen_logo">Verify Screen Logo</string>
 </resources>
