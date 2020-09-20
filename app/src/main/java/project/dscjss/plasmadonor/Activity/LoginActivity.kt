@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatEditText
 import project.dscjss.plasmadonor.R
+import project.dscjss.plasmadonor.Util.Utilities
 
 class LoginActivity : AppCompatActivity() {
 
@@ -28,8 +29,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun initiateLogin(){
-
-        startActivity(Intent(applicationContext, HomeScreen::class.java))
+        Utilities.showLongToast(this, "otp send")
+        startActivity(Intent(applicationContext, OTPActivity::class.java))
     }
 
     private fun checkInput() :Boolean{
