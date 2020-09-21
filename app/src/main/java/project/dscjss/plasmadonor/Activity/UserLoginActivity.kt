@@ -2,11 +2,34 @@ package project.dscjss.plasmadonor.Activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import project.dscjss.plasmadonor.Fragment.LoginFragment
+import project.dscjss.plasmadonor.Interface.FragmentChangeInterface
 import project.dscjss.plasmadonor.R
 
-class UserLoginActivity : AppCompatActivity() {
+class UserLoginActivity : AppCompatActivity(), FragmentChangeInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_login)
+
+        val fragment = LoginFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.loginFrame, fragment).commit()
+
     }
+
+    override fun changeFragment(fragment: Fragment) {
+
+        if (supportFragmentManager.backStackEntryCount == 0) {
+            supportFragmentManager.beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.loginFrame, fragment).commit()
+        }
+        else {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.loginFrame, fragment).commit()
+        }
+
+    }
+
 }
