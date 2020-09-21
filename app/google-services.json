@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "468365405235",
+    "firebase_url": "https://plasma-donor-app-7875c.firebaseio.com",
+    "project_id": "plasma-donor-app-7875c",
+    "storage_bucket": "plasma-donor-app-7875c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468365405235:android:c14e16c33d712fa7e58746",
+        "android_client_info": {
+          "package_name": "project.dscjss.plasmadonor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468365405235-80sqe038m221n1qgp4oeagg03trpdu4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6tkUWQNiRq2hM62dI-uoTEHAAhVgAQoE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468365405235-80sqe038m221n1qgp4oeagg03trpdu4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,6 @@
 package project.dscjss.plasmadonor.Data
 
 class AppConfig {
-    var SHARED_PREF = "SHARED_PREF"
-    var LOGIN_STATE = "LOGIN_STATE"
+    val SHARED_PREF = "SHARED_PREF"
+    val LOGIN_STATE = "LOGIN_STATE"
 }
