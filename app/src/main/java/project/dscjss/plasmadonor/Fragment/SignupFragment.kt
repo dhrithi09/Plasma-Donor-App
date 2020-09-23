@@ -23,6 +23,7 @@ class SignupFragment : Fragment() {
     lateinit var fragmentChangeInterface: FragmentChangeInterface
     private lateinit var viewModel: SignupViewModel
     private lateinit var firebaseAuth: FirebaseAuth
+    val TAG = "Signup Fragment"
 
     companion object {
         fun newInstance() = SignupFragment()

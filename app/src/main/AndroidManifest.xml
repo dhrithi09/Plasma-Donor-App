@@ -12,6 +12,7 @@
         <activity android:name=".Activity.UserLoginActivity" />
         <activity android:name=".Activity.OTPActivity" />
         <activity android:name=".Activity.HomeScreen" />
+        <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.LoginActivity"
             android:theme="@style/AppThemeNoAction"/>
         <activity android:name=".Activity.SplashActivity"
