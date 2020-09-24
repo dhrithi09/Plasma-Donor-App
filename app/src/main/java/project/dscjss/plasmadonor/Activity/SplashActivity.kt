@@ -1,16 +1,14 @@
 package project.dscjss.plasmadonor.Activity
 
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import project.dscjss.plasmadonor.R
 
 class SplashActivity : AppCompatActivity() {
 
-    var handler = Handler()
     lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        handler.postDelayed(Runnable {
+        Handler().postDelayed({
             if (firebaseAuth.currentUser != null) {
                 startActivity(Intent(applicationContext , MainActivity::class.java))
             }

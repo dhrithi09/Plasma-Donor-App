@@ -1,14 +1,12 @@
 package project.dscjss.plasmadonor.Fragment
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,14 +16,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.android.synthetic.main.signup_fragment.*
 import project.dscjss.plasmadonor.Activity.MainActivity
 import project.dscjss.plasmadonor.Interface.FragmentChangeInterface
 import project.dscjss.plasmadonor.R
+import project.dscjss.plasmadonor.Util.Utilities
 import project.dscjss.plasmadonor.ViewModel.LoginViewModel
 
-class LoginFragment : Fragment() {
+class LoginFragment : Fragment(), View.OnClickListener {
 
+    lateinit var utilities: Utilities
     lateinit var fragmentChangeInterface: FragmentChangeInterface
     lateinit var firebaseAuth: FirebaseAuth
     lateinit var firebaseFirestore: FirebaseFirestore
@@ -49,67 +48,14 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
-        firebaseAuth = FirebaseAuth.getInstance()
-        firebaseFirestore = FirebaseFirestore.getInstance()
+        init()
+
         // TODO: Use the ViewModel
 
-        fragmentChangeInterface = context as FragmentChangeInterface
-
-        tvSignUpLogin.setOnClickListener {
-            fragmentChangeInterface.changeFragment(SignupFragment())
-        }
-
-        tvForgot.setOnClickListener {
-
-            if (etEmailLogin.text.isNullOrEmpty()) {
-                etEmailLogin.error = "Enter Email to receive to Reset Password form"
-                etEmailLogin.requestFocus()
-                return@setOnClickListener
-            }
-            else {
-                etEmailLogin.error = null
-                etEmailLogin.clearFocus()
-            }
-
-            firebaseAuth.sendPasswordResetEmail(etEmailLogin.text.toString())
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Please check your Email", Toast.LENGTH_SHORT).show()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                }
-
-        }
-
-        tvLoginButton.setOnClickListener {
-            if (!checkFields())
-                return@setOnClickListener
-
-            firebaseAuth.signInWithEmailAndPassword(etEmailLogin.text.toString(), etPasswordLogin.text.toString())
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Login Success: ${it.user!!.displayName}", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(context, MainActivity::class.java))
-                    activity!!.finish()
-                }
-                .addOnFailureListener {
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                }
-
-        }
-
-        tvLoginGmail.setOnClickListener {
-
-            val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build()
-
-            googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
-
-            signInGmail()
-
-        }
+        tvSignUpLogin.setOnClickListener(this)
+        tvForgot.setOnClickListener(this)
+        tvLoginButton.setOnClickListener(this)
+        tvLoginGmail.setOnClickListener(this)
 
     }
 
@@ -132,7 +78,6 @@ class LoginFragment : Fragment() {
                     Log.d(TAG, "signInWithCredential:success")
                     val user = firebaseAuth.currentUser
 
-                    // Check if user already exist in Database
                     val docRef = firebaseFirestore.collection("users")
                         .whereEqualTo("uid", user!!.uid)
                     docRef.get()
@@ -158,11 +103,7 @@ class LoginFragment : Fragment() {
                                     .add(userHash)
                                     .addOnCompleteListener {
                                         if (it.isSuccessful) {
-                                            Toast.makeText(
-                                                context,
-                                                "Data Inserted",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            utilities.showShortToast(context!!, "Data Inserted")
 
                                             startActivity(Intent(context, MainActivity::class.java))
                                             activity!!.finish()
@@ -170,30 +111,20 @@ class LoginFragment : Fragment() {
                                         }
                                     }
 
-                            }
-                            else {
+                            } else {
                                 startActivity(Intent(context, MainActivity::class.java))
                                 activity!!.finish()
                             }
-
-
-//                            val account = task.getResult(ApiException::class.java)!!
-//                            Log.d(TAG, "firebaseAuthWithGoogle: ${account.displayName}")
-//                            Toast.makeText(context, "Login Success: ${account.displayName}", Toast.LENGTH_SHORT).show()
 
                         }
                         .addOnFailureListener { exception ->
                             Log.e(TAG, "get failed with ", exception)
                         }
 
-
-
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
-                    Toast.makeText(context, "Login Failed: ${task.exception}", Toast.LENGTH_SHORT).show()
-                    // ...
-//                    Snackbar.make(view, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
+                    utilities.showShortToast(context!!, "Login Failed: ${task.exception}")
                 }
 
             }
@@ -210,16 +141,13 @@ class LoginFragment : Fragment() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(TAG, "firebaseAuthWithGoogle: ${account.displayName}")
-                Toast.makeText(context, "Login Success: ${account.displayName}", Toast.LENGTH_SHORT).show()
-//                startActivity(Intent(context, MainActivity::class.java))
-//                activity!!.finish()
+                utilities.showShortToast(context!!, "Login Success: ${account.displayName}")
 
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
                 Log.w(TAG, "Google sign in failed ${e.message}", e)
-                Toast.makeText(context, "Login Failed: ${e.message}", Toast.LENGTH_SHORT).show()
-                // ...
+                utilities.showShortToast(context!!, "Login Failed: ${e.message}")
             }
         }
     }
@@ -230,8 +158,7 @@ class LoginFragment : Fragment() {
             etEmailLogin.error = "Email can't be empty"
             etEmailLogin.requestFocus()
             return false
-        }
-        else {
+        } else {
             etEmailLogin.error = null
             etEmailLogin.clearFocus()
         }
@@ -240,14 +167,80 @@ class LoginFragment : Fragment() {
             etPasswordLogin.error = "Email can't be empty"
             etPasswordLogin.requestFocus()
             return false
-        }
-        else {
+        } else {
             etPasswordLogin.error = null
             etPasswordLogin.clearFocus()
         }
 
         return true
 
+    }
+
+    private fun init() {
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseFirestore = FirebaseFirestore.getInstance()
+        utilities = Utilities
+        fragmentChangeInterface = context as FragmentChangeInterface
+    }
+
+    override fun onClick(v: View?) {
+        when (v!!.id) {
+            R.id.tvSignUpLogin -> {
+                fragmentChangeInterface.changeFragment(SignupFragment())
+            }
+
+            R.id.tvForgot -> {
+                if (etEmailLogin.text.isNullOrEmpty()) {
+                    etEmailLogin.error = "Enter Email to receive to Reset Password form"
+                    etEmailLogin.requestFocus()
+                    return
+                } else {
+                    etEmailLogin.error = null
+                    etEmailLogin.clearFocus()
+                }
+
+                firebaseAuth.sendPasswordResetEmail(etEmailLogin.text.toString())
+                    .addOnSuccessListener {
+                        utilities.showShortToast(context!!, "Please check your Email")
+                    }
+                    .addOnFailureListener {
+                        utilities.showShortToast(context!!, it.message + "")
+                    }
+            }
+
+            R.id.tvLoginButton -> {
+                if (!checkFields())
+                    return
+
+                firebaseAuth.signInWithEmailAndPassword(
+                    etEmailLogin.text.toString(),
+                    etPasswordLogin.text.toString()
+                )
+                    .addOnSuccessListener {
+                        utilities.showShortToast(context!!, "Login Success: ${it.user!!.displayName}")
+                        startActivity(Intent(context, MainActivity::class.java))
+                        activity!!.finish()
+                    }
+                    .addOnFailureListener {
+                        utilities.showShortToast(context!!, it.message + "")
+                    }
+            }
+
+            R.id.tvLoginGmail -> {
+
+                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build()
+
+                googleSignInClient = GoogleSignIn.getClient(activity!!, gso)
+
+                signInGmail()
+
+            }
+
+        }
     }
 
 }
