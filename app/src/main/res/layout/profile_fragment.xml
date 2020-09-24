@@ -1,13 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.ProfileFragment">
 
-    <TextView
+    <View
+        android:id="@+id/viewTop"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="146dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/colorPrimary"/>
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/buttonProfileEdit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_baseline_edit_24"
+        android:padding="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/colorGray" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewTop"
+        app:layout_constraintBottom_toBottomOf="@id/viewTop"/>
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileImage"
+        tools:text="Name of User"
+        android:fontFamily="@font/roboto"
+        android:textSize="20dp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="10dp"/>
+
+    <LinearLayout
+        android:id="@+id/layoutProfileInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvProfileName"
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorGrayLight"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Age : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvProfileAge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="18"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Blood Group : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvBloodGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="O+"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorGrayLight"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Weight : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvProfileWeight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="60 kg"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Gender : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvProfileGender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Male"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorGrayLight"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Mobile : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvProfileMobile"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="987 654 3210"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorWhite"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Email : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvProfileEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="plasma_doner@dscjss.in"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/colorGrayLight"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Location : "
+                android:layout_weight="0.3"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:id="@+id/tvProfileLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="India"
+                android:layout_weight="0.7"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

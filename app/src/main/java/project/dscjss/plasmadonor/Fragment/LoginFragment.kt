@@ -16,7 +16,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.login_fragment.*
+import kotlinx.android.synthetic.main.signup_fragment.*
 import project.dscjss.plasmadonor.Activity.MainActivity
 import project.dscjss.plasmadonor.Interface.FragmentChangeInterface
 import project.dscjss.plasmadonor.R
@@ -26,6 +28,7 @@ class LoginFragment : Fragment() {
 
     lateinit var fragmentChangeInterface: FragmentChangeInterface
     lateinit var firebaseAuth: FirebaseAuth
+    lateinit var firebaseFirestore: FirebaseFirestore
     private val RC_SIGN_IN = 101
     private val TAG = "Login Fragment"
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -48,6 +51,7 @@ class LoginFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         firebaseAuth = FirebaseAuth.getInstance()
+        firebaseFirestore = FirebaseFirestore.getInstance()
         // TODO: Use the ViewModel
 
         fragmentChangeInterface = context as FragmentChangeInterface
@@ -127,6 +131,63 @@ class LoginFragment : Fragment() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithCredential:success")
                     val user = firebaseAuth.currentUser
+
+                    // Check if user already exist in Database
+                    val docRef = firebaseFirestore.collection("users")
+                        .whereEqualTo("uid", user!!.uid)
+                    docRef.get()
+                        .addOnSuccessListener { document ->
+                            if (document.size() == 0) {
+                                Log.d(TAG, "No such User")
+
+                                val userHash: HashMap<String, String> = HashMap()
+                                userHash["uid"] = firebaseAuth.currentUser!!.uid
+                                userHash["FirstName"] =
+                                    user.displayName.toString().substringBefore(' ', "")
+                                userHash["LastName"] =
+                                    user.displayName.toString().substringAfter(' ', "")
+                                userHash["Email"] = user.email.toString()
+                                userHash["Phone"] = "Not Provided"
+                                userHash["BloodGroup"] = "Not Provided"
+                                userHash["Age"] = "Not Provided"
+                                userHash["Weight"] = "Not Provided"
+                                userHash["Gender"] = "Not Provided"
+                                userHash["Location"] = "Not Provided"
+
+                                FirebaseFirestore.getInstance().collection("users")
+                                    .add(userHash)
+                                    .addOnCompleteListener {
+                                        if (it.isSuccessful) {
+                                            Toast.makeText(
+                                                context,
+                                                "Data Inserted",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+
+                                            startActivity(Intent(context, MainActivity::class.java))
+                                            activity!!.finish()
+
+                                        }
+                                    }
+
+                            }
+                            else {
+                                startActivity(Intent(context, MainActivity::class.java))
+                                activity!!.finish()
+                            }
+
+
+//                            val account = task.getResult(ApiException::class.java)!!
+//                            Log.d(TAG, "firebaseAuthWithGoogle: ${account.displayName}")
+//                            Toast.makeText(context, "Login Success: ${account.displayName}", Toast.LENGTH_SHORT).show()
+
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.e(TAG, "get failed with ", exception)
+                        }
+
+
+
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithCredential:failure", task.exception)
@@ -135,7 +196,6 @@ class LoginFragment : Fragment() {
 //                    Snackbar.make(view, "Authentication Failed.", Snackbar.LENGTH_SHORT).show()
                 }
 
-                // ...
             }
     }
 
@@ -151,8 +211,8 @@ class LoginFragment : Fragment() {
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(TAG, "firebaseAuthWithGoogle: ${account.displayName}")
                 Toast.makeText(context, "Login Success: ${account.displayName}", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(context, MainActivity::class.java))
-                activity!!.finish()
+//                startActivity(Intent(context, MainActivity::class.java))
+//                activity!!.finish()
 
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {

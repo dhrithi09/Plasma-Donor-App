@@ -9,5 +9,6 @@
     <color name="colorBlack">#000000</color>
     <color name="whiteLight">#80FFFFFF</color>
     <color name="colorGray">#F3606060</color>
+    <color name="colorGrayLight">#F4EAEA</color>
 
 </resources>

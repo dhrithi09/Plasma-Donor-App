@@ -1,5 +1,6 @@
 package project.dscjss.plasmadonor.Fragment
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.login_fragment.*
 import kotlinx.android.synthetic.main.login_fragment.tvLogin
 import kotlinx.android.synthetic.main.signup_fragment.*
+import project.dscjss.plasmadonor.Activity.MainActivity
 import project.dscjss.plasmadonor.Interface.FragmentChangeInterface
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.ViewModel.SignupViewModel
@@ -97,12 +99,19 @@ class SignupFragment : Fragment() {
         user["LastName"] = etLastName.text.toString()
         user["Email"] = etEmail.text.toString()
         user["Phone"] = etPhone.text.toString()
+        user["BloodGroup"] = "Not Provided"
+        user["Age"] = "Not Provided"
+        user["Weight"] = "Not Provided"
+        user["Gender"] = "Not Provided"
+        user["Location"] = "Not Provided"
 
         FirebaseFirestore.getInstance().collection("users")
             .add(user)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     Toast.makeText(context, "Data Inserted", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(context, MainActivity::class.java))
+                    activity!!.finish()
                 }
                 else {
                     addDetails()
