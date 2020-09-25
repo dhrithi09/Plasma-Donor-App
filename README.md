@@ -1,3 +1,5 @@
+<div align="center"> <img align="center" alt="dschackfest2020" src="https://user-images.githubusercontent.com/42115530/94295926-a5741880-ff7f-11ea-890b-39ad20ac0f21.png" height='150' width='350'></div>
+
 # Plasma Donor App
 #### An Open Source App which fills the gap between the patients and the Plasma Donors. Beginnner Friendly Repository made for Open Source Enthusiast who can make the contribution in the App during HacktoberFest 2020. 
 [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/DSC-JSS-NOIDA/Plasma-Donor-App/blob/master/LICENSE)
@@ -6,6 +8,8 @@
 ![Minimum API Level](https://img.shields.io/badge/Min%20API%20Level-23-green)
 ![Maximum API Level](https://img.shields.io/badge/Max%20API%20Level-29-orange)
 ![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
+
+[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/0)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/0)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/1)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/1)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/2)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/2)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/3)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/3)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/4)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/4)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/5)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/5)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/6)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/6)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/7)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/7)
 
 ## Features
 - User can add Donors.
@@ -25,6 +29,10 @@
 ## Requirements
 - Android Version 5.0 and Above.
 - Min sdk 21
+
+## Slack Channel
+[![chat on slack](https://img.shields.io/badge/chat-on%20slack-brightgreen)](https://join.slack.com/t/dschackfest2020/shared_invite/zt-hvmr02i9-kApLVOuvUHIolKwBbk4Vsg)
+
 
 ## Getting Started
 ### 1. Register yourself to Hacktoberfest 2020
