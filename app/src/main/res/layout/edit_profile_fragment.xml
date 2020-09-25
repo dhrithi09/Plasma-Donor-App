@@ -5,23 +5,120 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.EditProfileFragment">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Edit Profile"
-        android:gravity="center"/>
+        android:layout_marginBottom="80dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <EditText
+                android:id="@+id/etFirstName"
+                android:hint="First Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etLastName"
+                android:hint="Last Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+
+            <EditText
+                android:id="@+id/etGender"
+                android:hint="Gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etAge"
+                android:hint="Age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etBloodGrp"
+                android:hint="Blood Group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etWeight"
+                android:hint="Weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:hint="Email ID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etPhone"
+                android:hint="Phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <EditText
+                android:id="@+id/etLocation"
+                android:hint="Location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <Button
         android:id="@+id/btSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:layout_marginStart="45dp"
         android:layout_marginEnd="45dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/btn_red_background"
         android:text="Save"
-        android:textColor="@android:color/white"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@android:color/white" />
 
 </FrameLayout>
