@@ -27,38 +27,109 @@
 - Min sdk 21
 
 ## Getting Started
-<!-- Work in Progress -->
+### 1. Register yourself to Hacktoberfest 2020
+###### Link to register: https://hacktoberfest.digitalocean.com/
+![](./AppReadmeFiles/hacktoberfest_website.png)
 
+### 2. Get Started to start contributing
+![](./AppReadmeFiles/hacktoberfest_get_started.png)
 
-## License
+### 3. Star and Fork this Repository
+###### You can star ⭐ and fork 🍽️ this repository on GitHub by navigating at the top of this repository.
+![](./AppReadmeFiles/star_repo.png)
+###### GitHub repository URLs will reference both the username associated with the owner of the repository, as well as the repository name. For example, DSC-JSS-NOIDA is the owner of this repository, so the GitHub URL for this project is:
 
+https://github.com/DSC-JSS-NOIDA/Plasma-Donor-App
+
+###### When you’re on the main page for the repository, you’ll see a button to "Star" and “Fork” the repository on your upper right-hand side of the page, underneath your user icon.
+
+### 4. Clone the Repository
+###### To make your own local copy of the repository you would like to contribute to, let’s first open up a terminal window.
+###### We’ll use the git clone command along with the URL that points to your fork of the repository.
+###### This URL will be similar to the URL above, except now it will end with .git. In the example above, the URL will look like this:
+
+https://github.com/your-username/Plasma-Donor-App.git
+
+###### You can alternatively copy the URL by using the green “Clone or download” button from your repository page that you just forked from the original repository page. Once you click the button, you’ll be able to copy the URL by clicking the binder button next to the URL:
+![](./AppReadmeFiles/clone_repo.png)
+
+###### Once we have the URL, we’re ready to clone the repository. To do this, we’ll combine the git clone command with the repository URL from the command line in a terminal window:
 ```
-MIT License
-
-Copyright (c) 2020 DSC JSS NOIDA
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+git clone https://github.com/your-username/Plasma-Donor-App.git
 ```
+![](./AppReadmeFiles/clone_the_repo.png)
+
+### 5. Download Android Studio
+###### Link to Developers page: https://developer.android.com/studio
+![](./AppReadmeFiles/download_android_studio.png)
+
+### 6. Open the Project
+###### After completing the setup for Android Studio open the project.
+![](./AppReadmeFiles/Open_project.png)
+
+### 7. Create New Branch
+###### Once the project is opened create a new branch and checkout in it where you can make the changes in the code.
+###### You can do this either from terminal or Directly in Android Studio.
+###### To do from Terminal:
+```
+git branch new-branch
+git checkout new-branch
+```
+###### To do directly from Android Studio
+###### Click on Git branch in the bottom-right corner in Android Studio and create a new branch from there and checkout to it.
+![](./AppReadmeFiles/Change_branch.png)
+
+### 8. Commit and Push
+###### After making the required changes commit and push your code
+###### Terminal:
+###### To add the changes after you have made the modifications
+``` git add . ``` or ``` git add -A ```
+###### To commit and push the changes
+```
+git commit -m <Your-commit-message>
+```
+```
+git push --set-upstream origin new-branch
+```
+###### From Android Studio:
+![](./AppReadmeFiles/comit_change.png)
+![](./AppReadmeFiles/push_changes.png)
+
+### 9. Update Local Repository
+###### While working on a project alongside other contributors, it is important for you to keep your local repository up-to-date with the project as you don’t want to make a pull request for code that will cause conflicts. To keep your local copy of the code base updated, you’ll need to sync changes.
+###### We’ll first go over configuring a remote for the fork, then syncing the fork.
+
+### 10. Configure a Remote for the Fork
+###### You’ll have to specify a new remote upstream repository for us to sync with the fork. This will be the original repository that you forked from. you’ll have to do this with the git remote add command.
+```
+git remote add upstream https://github.com/DSC-JSS-NOIDA/Plasma-Donor-App
+```
+###### In this example, // upstream // is the shortname we have supplied for the remote repository since in terms of Git, “upstream” refers to the repository that you cloned from. If you want to add a remote pointer to the repository of a collaborator, you may want to provide that collaborator’s username or a shortened nickname for the shortname.
+
+### 11. Sync the Fork
+###### Once you have configured a remote that references the upstream and original repository on GitHub, you are ready to sync your fork of the repository to keep it up-to-date.
+To sync your fork, from the directory of your local repository in a terminal window, you’ll have to use the // git fetch // command to fetch the branches along with their respective commits from the upstream repository. Since you used the shortname “upstream” to refer to the upstream repository, you’ll have to pass that to the command:
+``` git fetch upstream ```
+###### Switch to the local master branch of our repository:
+``` git checkout master ```
+###### Now merge any changes that were made in the original repository’s master branch, that you will access through your local upstream/master branch, with your local master branch:
+``` git merge upstream/master ```
+
+### 12. Create Pull Request
+###### At this point, you are ready to make a pull request to the original repository.
+###### Now navigate to your forked repository, and press the “New pull request” button on your left-hand side of the page.
+![](./AppReadmeFiles/open_pr.png)
+
+## Hurray!!! You just got closer to completing your hacktoberfest challenge. 😃
+## Happy?? Star ⭐ this Repo. 🤩
+### Check your Hacktoberfest Contribution status at:
+https://hacktoberfest.digitalocean.com/profile
+
+
 ![Kotlin](https://img.shields.io/badge/kotlin-%230095D5.svg?&style=for-the-badge&logo=kotlin&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma%20-%23F24E1E.svg?&style=for-the-badge&logo=figma&logoColor=white)
 ![Git](https://img.shields.io/badge/git%20-%23F05033.svg?&style=for-the-badge&logo=git&logoColor=white)
 ![Github](https://img.shields.io/badge/github%20-%23121011.svg?&style=for-the-badge&logo=github&logoColor=white)
-
+##### Made with ❤️ By Developer Student Clubs JSS
 ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
 ![ForTheBadge ANDROID](https://forthebadge.com/images/badges/built-for-android.svg)
