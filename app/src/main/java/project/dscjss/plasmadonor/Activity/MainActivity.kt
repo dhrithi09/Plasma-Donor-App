@@ -3,11 +3,15 @@ package project.dscjss.plasmadonor.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
 import project.dscjss.plasmadonor.Fragment.ProfileFragment
 import project.dscjss.plasmadonor.Interface.FragmentChangeInterface
 import project.dscjss.plasmadonor.R
 
 class MainActivity : AppCompatActivity(), FragmentChangeInterface {
+
+    private lateinit var firebaseAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen)

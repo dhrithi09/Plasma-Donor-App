@@ -6,10 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.auth.FirebaseAuth
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.ViewModel.FeedsViewModel
 
 class FeedsFragment : Fragment() {
+
+    private lateinit var firebaseAuth: FirebaseAuth
 
     companion object {
         fun newInstance() = FeedsFragment()
