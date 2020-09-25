@@ -11,4 +11,6 @@
     <string name="enter_otp_sent_on_your_mobile">Enter OTP sent on your mobile</string>
     <string name="verify_otp">Verify OTP</string>
     <string name="verify_screen_logo">Verify Screen Logo</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
