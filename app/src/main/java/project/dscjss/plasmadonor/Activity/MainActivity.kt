@@ -1,5 +1,6 @@
 package project.dscjss.plasmadonor.Activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import project.dscjss.plasmadonor.AboutFragment
 import project.dscjss.plasmadonor.Fragment.*
 import project.dscjss.plasmadonor.Interface.FragmentChangeInterface
 import project.dscjss.plasmadonor.R
@@ -21,17 +23,22 @@ class MainActivity : AppCompatActivity(), FragmentChangeInterface, NavigationVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val drawer=findViewById<DrawerLayout>(R.id.drawerLayout)
-        val toggle = ActionBarDrawerToggle(this,drawer,R.string.open,R.string.close)
+
+        init()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.mainFrame, ProfileFragment())
+            .commit()
+    }
+
+    private fun init() {
+        val drawer = findViewById<DrawerLayout>(R.id.drawerLayout)
+        val toggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
         drawer.addDrawerListener(toggle)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setHomeButtonEnabled(true)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainFrame, ProfileFragment())
-            .commit()
     }
 
     override fun changeFragment(fragment: Fragment) {
@@ -51,10 +58,18 @@ class MainActivity : AppCompatActivity(), FragmentChangeInterface, NavigationVie
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.home -> initiate(FeedsFragment())
+            R.id.viewDonors -> initiate(DonorListFragment())
+            R.id.viewPatients -> initiate(PatientListFragment())
             R.id.addDonor -> initiate(DonorFormFragment())
             R.id.addPatient -> initiate(PatientFormFragment())
             R.id.profile -> initiate(ProfileFragment())
             R.id.faq -> initiate(FaqFragment())
+            R.id.aboutUs -> initiate(AboutFragment())
+            R.id.logout -> {
+                firebaseAuth.signOut()
+                startActivity(Intent(this, UserLoginActivity::class.java))
+                finish()
+            }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
