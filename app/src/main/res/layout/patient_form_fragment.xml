@@ -93,68 +93,36 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="30dp" />
 
-            <LinearLayout
+            <CheckBox
+                android:id="@+id/cbDiabetes"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginStart="30dp"
+                android:text="Diabetes"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"/>
 
-                <CheckBox
-                    android:id="@+id/cbDiabetes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Diabetes"
-                    android:textSize="22sp"
-                    android:layout_marginLeft="8dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <CheckBox
+                android:id="@+id/cbLiver"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:layout_marginStart="30dp"
+                android:text="Liver Problem"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"/>
 
-                <CheckBox
-                    android:id="@+id/cbLiver"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Liver Problem"
-                    android:textSize="22sp"
-                    android:layout_marginLeft="8dp"/>
-
-            </LinearLayout>
-
-            <LinearLayout
+            <CheckBox
+                android:id="@+id/cbBpProblem"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <CheckBox
-                    android:id="@+id/cbBlood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="BP Problem"
-                    android:textSize="22sp"
-                    android:layout_marginLeft="8dp"/>
-
-            </LinearLayout>
+                android:layout_marginStart="30dp"
+                android:text="BP Problem"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:paddingStart="10dp"/>
 
             <View
                 android:layout_width="match_parent"
