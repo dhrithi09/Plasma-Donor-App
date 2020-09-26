@@ -6,31 +6,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProvider
-import com.google.firebase.auth.FirebaseAuth
 import project.dscjss.plasmadonor.R
-import project.dscjss.plasmadonor.ViewModel.DonorFormViewModel
+import project.dscjss.plasmadonor.ViewModel.DonorListViewModel
 
-class DonorFormFragment : Fragment() {
-
-    private lateinit var firebaseAuth: FirebaseAuth
+class DonorListFragment : Fragment() {
 
     companion object {
-        fun newInstance() = DonorFormFragment()
+        fun newInstance() = DonorListFragment()
     }
 
-    private lateinit var viewModel: DonorFormViewModel
+    private lateinit var viewModel: DonorListViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.donor_form_fragment, container, false)
+        return inflater.inflate(R.layout.donor_list_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DonorFormViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(DonorListViewModel::class.java)
         // TODO: Use the ViewModel
     }
 

@@ -20,15 +20,14 @@ import project.dscjss.plasmadonor.ViewModel.ProfileViewModel
 class ProfileFragment : Fragment() {
 
     companion object {
+        private const val TAG = "ProfileFragment"
         fun newInstance() = ProfileFragment()
     }
 
-    lateinit var utilities : Utilities
     lateinit var fragmentChangeInterface: FragmentChangeInterface
     private lateinit var viewModel: ProfileViewModel
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
-    private val TAG = "Profile Fragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,9 +38,7 @@ class ProfileFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-        firebaseAuth = FirebaseAuth.getInstance()
-        firebaseFirestore = FirebaseFirestore.getInstance()
+
 
         init()
 
@@ -69,7 +66,7 @@ class ProfileFragment : Fragment() {
                 }
                 .addOnFailureListener {
 
-                    utilities.showShortToast(context!! , "Something went wrong fetching user details")
+                    Utilities.showShortToast(context!! , "Something went wrong fetching user details")
 
                     Log.e(TAG, it.message.toString())
                 }
@@ -80,7 +77,9 @@ class ProfileFragment : Fragment() {
     private fun init(){
 
         fragmentChangeInterface = context as FragmentChangeInterface
-        utilities =Utilities
+        viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseFirestore = FirebaseFirestore.getInstance()
 
         buttonProfileEdit.setOnClickListener{
             fragmentChangeInterface.changeFragment(EditProfileFragment())
