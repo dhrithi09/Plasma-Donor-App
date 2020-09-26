@@ -26,12 +26,15 @@ class MainActivity : AppCompatActivity(), FragmentChangeInterface, NavigationVie
 
         init()
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainFrame, ProfileFragment())
-            .commit()
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.mainFrame, ProfileFragment())
+//            .commit()
     }
 
     private fun init() {
+
+        firebaseAuth = FirebaseAuth.getInstance()
+
         val drawer = findViewById<DrawerLayout>(R.id.drawerLayout)
         val toggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
         drawer.addDrawerListener(toggle)
