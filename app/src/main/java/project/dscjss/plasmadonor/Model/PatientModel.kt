@@ -6,9 +6,10 @@ class PatientModel (
     var gender: String,
     var location: String,
     var hospital: String,
+    var bloodGroup: String,
     var mobile: String,
     var email: String,
-    var diabities: String,
+    var diabetes: String,
     var liverProblem: String,
     var bpProblem: String
 )
