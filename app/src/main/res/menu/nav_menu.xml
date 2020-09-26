@@ -3,6 +3,10 @@
 
     <item android:id="@+id/home"
          android:title="Home"/>
+    <item android:id="@+id/viewDonors"
+        android:title="View Donors"/>
+    <item android:id="@+id/viewPatients"
+        android:title="ViewPatients"/>
     <item android:id="@+id/addDonor"
          android:title="Add Donor"/>
     <item android:id="@+id/addPatient"
