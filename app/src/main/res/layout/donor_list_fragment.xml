@@ -7,7 +7,7 @@
     tools:context=".Fragment.DonorListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/patientListRecyclerView"
+        android:id="@+id/donorListRecyclerView"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         tools:listitem="@layout/donor_list_item"/>
