@@ -1,3 +1,5 @@
+<div align="center"> <img align="center" alt="dschackfest2020" src="https://user-images.githubusercontent.com/42115530/94295926-a5741880-ff7f-11ea-890b-39ad20ac0f21.png" height='150' width='350'></div>
+
 # Plasma Donor App
 #### An Open Source App which fills the gap between the patients and the Plasma Donors. Beginnner Friendly Repository made for Open Source Enthusiast who can make the contribution in the App during HacktoberFest 2020. 
 [![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/DSC-JSS-NOIDA/Plasma-Donor-App/blob/master/LICENSE)
@@ -6,6 +8,8 @@
 ![Minimum API Level](https://img.shields.io/badge/Min%20API%20Level-23-green)
 ![Maximum API Level](https://img.shields.io/badge/Max%20API%20Level-29-orange)
 ![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
+
+[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/0)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/0)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/1)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/1)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/2)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/2)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/3)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/3)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/4)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/4)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/5)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/5)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/6)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/6)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/7)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/7)
 
 ## Features
 - User can add Donors.
@@ -25,6 +29,10 @@
 ## Requirements
 - Android Version 5.0 and Above.
 - Min sdk 21
+
+## Slack Channel
+[![chat on slack](https://img.shields.io/badge/chat-on%20slack-brightgreen)](https://join.slack.com/t/dschackfest2020/shared_invite/zt-hvmr02i9-kApLVOuvUHIolKwBbk4Vsg)
+
 
 ## Getting Started
 ### 1. Register yourself to Hacktoberfest 2020
@@ -133,3 +141,33 @@ https://hacktoberfest.digitalocean.com/profile
 ##### Made with ❤️ By Developer Student Clubs JSS
 ![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
 ![ForTheBadge ANDROID](https://forthebadge.com/images/badges/built-for-android.svg)
+
+> **_Need help?_** 
+> **_Feel free to contact us @ [dscjssnoida@gmail.com](mailto:idscjssnoida@gmail.com?Subject=DSCHackFest2020)_**
+
+
+## Connect with us  
+<div align="center">
+ <a href="https://dscjss.in/"><img src="https://user-images.githubusercontent.com/42115530/94302134-5c28c680-ff89-11ea-9ca4-5dcdd4279786.png"  height=100px /></a> <br><br> 
+<a href="https://github.com/DSC-JSS-NOIDA" target="_blank">
+<img src=https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white alt=github style="margin-bottom: 5px;" />
+</a>
+<a href="https://twitter.com/DSCJSSATEN" target="_blank">
+<img src=https://img.shields.io/badge/twitter-%2300acee.svg?&style=for-the-badge&logo=twitter&logoColor=white alt=twitter style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.linkedin.com/company/dsc-jssaten/" target="_blank">
+<img src=https://img.shields.io/badge/linkedin-%231E77B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white alt=linkedin style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.facebook.com/dscjssnoida/" target="_blank">
+<img src=https://img.shields.io/badge/facebook-%232E87FB.svg?&style=for-the-badge&logo=facebook&logoColor=white alt=facebook style="margin-bottom: 5px;" />
+</a>
+<a href="https://www.instagram.com/dscjssaten/?igshid=9ubqtp1ssqsi" target="_blank">
+<img src=https://img.shields.io/badge/instagram-%23000000.svg?&style=for-the-badge&logo=instagram&logoColor=white alt=instagram style="margin-bottom: 5px;" />
+</a>
+<a href="https://medium.com/dsc-jss-noida" target="_blank">
+<img src=https://img.shields.io/badge/medium-%23292929.svg?&style=for-the-badge&logo=medium&logoColor=white alt=medium style="margin-bottom: 5px;" />
+</a>  
+<a href="https://www.youtube.com/channel/UCkELk5JFDceaSf8pBa19kDQ" target="_blank">
+<img src=https://img.shields.io/badge/youtube-%23FF0000.svg?&style=for-the-badge&logo=youtube&logoColor=white alt=youtube style="margin-bottom: 5px;" />
+</a> 
+</div> 
