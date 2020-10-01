@@ -30,7 +30,6 @@ class PatientListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.patient_list_fragment, container, false)
-        getData()
         return view
     }
 
@@ -73,6 +72,8 @@ class PatientListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(PatientListViewModel::class.java)
         // TODO: Use the ViewModel
+
+        getData()
     }
 
 }

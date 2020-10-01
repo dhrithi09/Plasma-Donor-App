@@ -29,7 +29,6 @@ class DonorListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.donor_list_fragment, container, false)
-        getData()
         return view
     }
 
@@ -72,6 +71,7 @@ class DonorListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(DonorListViewModel::class.java)
         // TODO: Use the ViewModel
+        getData()
     }
 
 }
