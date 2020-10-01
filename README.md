@@ -11,6 +11,29 @@
 
 [![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/0)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/0)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/1)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/1)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/2)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/2)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/3)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/3)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/4)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/4)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/5)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/5)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/6)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/6)[![](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/images/7)](https://sourcerer.io/fame/PragatiVerma18/DSC-JSS-NOIDA/Plasma-Donor-App/links/7)
 
+Table of Contents
+=================
+
+   * [Features](#features)
+   * [Tech Used](#tech-used)
+   * [Requirements](#requirements)
+   * [Slack Channel](#slack-channel)
+   * [Getting Started](#getting-started)
+      * [1. Register yourself to Hacktoberfest 2020](#1-register-yourself-to-hacktoberfest-2020)
+      * [2. Get Started to start contributing](#2-get-started-to-start-contributing)
+      * [3. Star and Fork this Repository](#3-star-and-fork-this-repository)
+      * [4. Clone the Repository](#4-clone-the-repository)
+      * [5. Download Android Studio](#5-download-android-studio)
+      * [6. Open the Project](#6-open-the-project)
+      * [7. Create New Branch](#7-create-new-branch)
+      * [8. Commit and Push](#8-commit-and-push)
+      * [9. Update Local Repository](#9-update-local-repository)
+      * [10. Configure a Remote for the Fork](#10-configure-a-remote-for-the-fork)
+      * [11. Sync the Fork](#11-sync-the-fork)
+      * [12. Create Pull Request](#12-create-pull-request)
+   * [Check your Hacktoberfest Contribution status](#check-your-hacktoberfest-contribution-status-at)
+   * [Connect with us](#connect-with-us)
+
 ## Features
 - User can add Donors.
 - User can Add Patients.
