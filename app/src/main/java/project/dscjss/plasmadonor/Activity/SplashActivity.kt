@@ -3,6 +3,7 @@ package project.dscjss.plasmadonor.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import project.dscjss.plasmadonor.R
@@ -17,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
 
-        Handler().postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({
             if (firebaseAuth.currentUser != null) {
                 startActivity(Intent(applicationContext , MainActivity::class.java))
             }
