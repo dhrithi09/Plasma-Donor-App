@@ -54,31 +54,31 @@ class DonorFormFragment : Fragment() {
         btSubmit.setOnClickListener {
             var check : Boolean = false
             if(etName.text.isBlank()){
-                etName.error = "This field cannot be blank!"
+                etName.error = "Name cannot be blank!"
                 check = true
             }
             if(etBloodGrp.text.isBlank()){
-                etBloodGrp.error = "This field cannot be blank!"
+                etBloodGrp.error = "Blood group cannot be blank!"
                 check = true
             }
             if(etAge.text.isBlank()){
-                etAge.error = "This field cannot be blank!"
+                etAge.error = "Age cannot be blank!"
                 check = true
             }
             if(etGender.text.isBlank()){
-                etGender.error = "This field cannot be blank!"
+                etGender.error = "Gender cannot be blank!"
                 check = true
             }
             if(etLocation.text.isBlank()){
-                etLocation.error = "This field cannot be blank!"
+                etLocation.error = "Location cannot be blank!"
                 check = true
             }
             if(etMobile.text.isBlank()){
-                etMobile.error = "This field cannot be blank!"
+                etMobile.error = "Mobile cannot be blank!"
                 check = true
             }
             if(etEmail.text.isBlank()){
-                etEmail.error = "This field cannot be blank!"
+                etEmail.error = "Email cannot be blank!"
                 check = true
             }
 
