@@ -39,6 +39,35 @@ class PatientFormFragment : Fragment() {
 
         btSubmit.setOnClickListener {
 
+            if(etName.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Name cannot be blank!")
+                return@setOnClickListener
+            }
+            if(etBloodGrp.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
+                return@setOnClickListener
+            }
+            if(etAge.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Age cannot be blank!")
+                return@setOnClickListener
+            }
+            if(etGender.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
+                return@setOnClickListener
+            }
+            if(etLocation.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Location cannot be blank!")
+                return@setOnClickListener
+            }
+            if(etMobile.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Mobile cannot be blank!")
+                return@setOnClickListener
+            }
+            if(etEmail.text.isBlank()){
+                Utilities.showShortToast(requireContext(),"Email cannot be blank!")
+                return@setOnClickListener
+            }
+
             insertData()
 
         }
