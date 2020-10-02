@@ -1,6 +1,8 @@
 package project.dscjss.plasmadonor.Fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,37 +52,104 @@ class DonorFormFragment : Fragment() {
         // TODO: Use the ViewModel
 
         btSubmit.setOnClickListener {
+            var check : Boolean = false
             if(etName.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Name cannot be blank!")
-                return@setOnClickListener
+                etName.error = "This field cannot be blank!"
+                check = true
             }
             if(etBloodGrp.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
-                return@setOnClickListener
+                etBloodGrp.error = "This field cannot be blank!"
+                check = true
             }
             if(etAge.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Age cannot be blank!")
-                return@setOnClickListener
+                etAge.error = "This field cannot be blank!"
+                check = true
             }
             if(etGender.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
-                return@setOnClickListener
+                etGender.error = "This field cannot be blank!"
+                check = true
             }
             if(etLocation.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Location cannot be blank!")
-                return@setOnClickListener
+                etLocation.error = "This field cannot be blank!"
+                check = true
             }
             if(etMobile.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Mobile cannot be blank!")
-                return@setOnClickListener
+                etMobile.error = "This field cannot be blank!"
+                check = true
             }
             if(etEmail.text.isBlank()){
-                Utilities.showShortToast(requireContext(),"Email cannot be blank!")
-                return@setOnClickListener
+                etEmail.error = "This field cannot be blank!"
+                check = true
             }
+
+            if(check)
+                return@setOnClickListener
 
             insertData()
         }
+        etName.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etName.error = null
+            }
+        })
+        etAge.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etAge.error = null
+            }
+        })
+        etBloodGrp.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etBloodGrp.error = null
+            }
+        })
+        etGender.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etGender.error = null
+            }
+        })
+        etLocation.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etLocation.error = null
+            }
+        })
+        etMobile.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etMobile.error = null
+            }
+        })
+        etEmail.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {}
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                etEmail.error = null
+            }
+        })
     }
 
 
