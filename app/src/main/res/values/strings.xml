@@ -31,4 +31,5 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+    <string name="plasma_donor">PLASMA DONOR</string>
 </resources>
