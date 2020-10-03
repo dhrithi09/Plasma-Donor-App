@@ -28,14 +28,16 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp" />
 
-            <EditText
-                android:id="@+id/etBloodGrp"
-                android:hint="Blood Group"
+            <Spinner
+                android:id="@+id/spBloodGrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/blood_group_array"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
 
 
             <EditText
@@ -48,14 +50,16 @@
                 android:layout_marginEnd="16dp"
                 android:inputType="number"/>
 
-            <EditText
-                android:id="@+id/etGender"
-                android:hint="Gender"
+            <Spinner
+                android:id="@+id/spGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/gender_array"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined" />
 
             <EditText
                 android:id="@+id/etLocation"

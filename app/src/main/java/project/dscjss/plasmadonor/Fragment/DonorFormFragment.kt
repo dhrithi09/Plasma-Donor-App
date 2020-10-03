@@ -1,26 +1,15 @@
 package project.dscjss.plasmadonor.Fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.donor_form_fragment.*
-import kotlinx.android.synthetic.main.patient_form_fragment.*
-import kotlinx.android.synthetic.main.patient_form_fragment.btSubmit
-import kotlinx.android.synthetic.main.patient_form_fragment.cbBpProblem
-import kotlinx.android.synthetic.main.patient_form_fragment.cbDiabetes
-import kotlinx.android.synthetic.main.patient_form_fragment.cbLiver
-import kotlinx.android.synthetic.main.patient_form_fragment.etAge
-import kotlinx.android.synthetic.main.patient_form_fragment.etBloodGrp
-import kotlinx.android.synthetic.main.patient_form_fragment.etEmail
-import kotlinx.android.synthetic.main.patient_form_fragment.etGender
-import kotlinx.android.synthetic.main.patient_form_fragment.etLocation
-import kotlinx.android.synthetic.main.patient_form_fragment.etMobile
-import kotlinx.android.synthetic.main.patient_form_fragment.etName
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.Util.Utilities
 import project.dscjss.plasmadonor.ViewModel.DonorFormViewModel
@@ -47,6 +36,8 @@ class DonorFormFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         init()
+        setupBloodGroupSpinner()
+        setupGenderSpinner()
         // TODO: Use the ViewModel
 
         btSubmit.setOnClickListener {
@@ -54,7 +45,7 @@ class DonorFormFragment : Fragment() {
                 Utilities.showShortToast(requireContext(),"Name cannot be blank!")
                 return@setOnClickListener
             }
-            if(etBloodGrp.text.isBlank()){
+            if(spBloodGrp?.selectedItem.toString().equals(getString(R.string.blood_group), true)){
                 Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
                 return@setOnClickListener
             }
@@ -62,7 +53,7 @@ class DonorFormFragment : Fragment() {
                 Utilities.showShortToast(requireContext(),"Age cannot be blank!")
                 return@setOnClickListener
             }
-            if(etGender.text.isBlank()){
+            if(spGender?.selectedItem.toString().equals(getString(R.string.gender), true)){
                 Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
                 return@setOnClickListener
             }
@@ -83,15 +74,31 @@ class DonorFormFragment : Fragment() {
         }
     }
 
+    private fun setupGenderSpinner() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spGender?.adapter = arrayAdapter
+            }
+    }
+
+    private fun setupBloodGroupSpinner() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.blood_group_array, android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spBloodGrp?.adapter = arrayAdapter
+            }
+    }
+
 
     private fun insertData() {
         var donorDetails = HashMap<String, String>()
         donorDetails["Name"] = etName.text.toString()
         donorDetails["Age"] = etAge.text.toString()
-        donorDetails["Gender"] = etGender.text.toString()
+        donorDetails["Gender"] = spGender.selectedItem.toString()
         donorDetails["Location"] = etLocation.text.toString()
         donorDetails["Mobile"] = etMobile.text.toString()
-        donorDetails["BloodGroup"] = etBloodGrp.text.toString()
+        donorDetails["BloodGroup"] = spBloodGrp.selectedItem.toString()
         donorDetails["Diabetes"] = cbDiabetes.isChecked.toString()
         donorDetails["BpProblem"] = cbBpProblem.isChecked.toString()
         donorDetails["LiverProblem"] = cbLiver.isChecked.toString()
@@ -117,10 +124,10 @@ class DonorFormFragment : Fragment() {
 
         etName.setText("")
         etAge.setText("")
-        etGender.setText("")
+        spGender?.setSelection(0)
         etLocation.setText("")
         etMobile.setText("")
-        etBloodGrp.setText("")
+        spBloodGrp?.setSelection(0)
         etEmail.setText("")
         if (cbDiabetes.isChecked) cbDiabetes.isChecked = false
         if (cbBpProblem.isChecked) cbBpProblem.isChecked = false
