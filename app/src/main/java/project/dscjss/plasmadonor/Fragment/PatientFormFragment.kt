@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
@@ -51,9 +52,8 @@ class PatientFormFragment : Fragment() {
             }
 
             if(spBloodGrp?.selectedItem.toString().equals(getString(R.string.blood_group), true)){
-                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
-                return@setOnClickListener
-
+                (spBloodGrp.selectedView as TextView).error = "Select Blood Group"
+                check = true
             }
             if(etAge.text.isBlank()){
                 etAge.error = "Age cannot be blank!"
@@ -61,19 +61,19 @@ class PatientFormFragment : Fragment() {
             }
 
             if(spGender?.selectedItem.toString().equals(getString(R.string.gender), true)){
-                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
-                return@setOnClickListener
+                (spGender.selectedView as TextView).error = "Select Gender"
+                check = true
             }
             if(etLocation.text.isBlank()){
                 etLocation.error = "Location cannot be blank!"
                 check = true
             }
-            if(etMobile.text.isBlank() || isPhoneNumberValid(etMobile.text.toString())){
+            if(etMobile.text.isBlank()){
                 etMobile.error = "Mobile no. cannot be blank!"
-                return@setOnClickListener
+                check=true
             } else if (!isPhoneNumberValid(etMobile.text.toString())) {
                 etMobile.error = "Mobile no. invalid!"
-                return@setOnClickListener
+                check=true
             }
             if(etEmail.text.isBlank()){
                 etEmail.error = "Email cannot be blank!"
@@ -148,7 +148,11 @@ class PatientFormFragment : Fragment() {
     }
 
     private fun setupGenderSpinner() {
-        ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item)
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.gender_array,
+            android.R.layout.simple_spinner_item
+        )
             .also { arrayAdapter ->
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spGender?.adapter = arrayAdapter
@@ -156,7 +160,11 @@ class PatientFormFragment : Fragment() {
     }
 
     private fun setupBloodGroupSpinner() {
-        ArrayAdapter.createFromResource(requireContext(), R.array.blood_group_array, android.R.layout.simple_spinner_item)
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.blood_group_array,
+            android.R.layout.simple_spinner_item
+        )
             .also { arrayAdapter ->
                 arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 spBloodGrp?.adapter = arrayAdapter

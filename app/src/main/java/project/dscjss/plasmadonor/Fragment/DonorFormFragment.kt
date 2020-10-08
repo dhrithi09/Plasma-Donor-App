@@ -7,11 +7,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.donor_form_fragment.*
+import kotlinx.android.synthetic.main.donor_form_fragment.btSubmit
+import kotlinx.android.synthetic.main.donor_form_fragment.cbBpProblem
+import kotlinx.android.synthetic.main.donor_form_fragment.cbDiabetes
+import kotlinx.android.synthetic.main.donor_form_fragment.cbLiver
+import kotlinx.android.synthetic.main.donor_form_fragment.etAge
+import kotlinx.android.synthetic.main.donor_form_fragment.etEmail
+import kotlinx.android.synthetic.main.donor_form_fragment.etLocation
+import kotlinx.android.synthetic.main.donor_form_fragment.etMobile
+import kotlinx.android.synthetic.main.donor_form_fragment.etName
+import kotlinx.android.synthetic.main.donor_form_fragment.spBloodGrp
+import kotlinx.android.synthetic.main.donor_form_fragment.spGender
+import kotlinx.android.synthetic.main.patient_form_fragment.*
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.Util.Utilities
 import project.dscjss.plasmadonor.Util.isPhoneNumberValid
@@ -51,29 +64,28 @@ class DonorFormFragment : Fragment() {
             }
 
             if(spBloodGrp?.selectedItem.toString().equals(getString(R.string.blood_group), true)){
-                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
-                return@setOnClickListener
+                (spBloodGrp.selectedView as TextView).error = "Select Blood Group"
+                check = true
             }
             if(etAge.text.isBlank()){
                 etAge.error = "Age cannot be blank!"
                 check = true
             }
+
             if(spGender?.selectedItem.toString().equals(getString(R.string.gender), true)){
-                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
-                return@setOnClickListener
+                (spGender.selectedView as TextView).error = "Select Gender"
+                check = true
             }
             if(etLocation.text.isBlank()){
                 etLocation.error = "Location cannot be blank!"
                 check = true
             }
             if(etMobile.text.isBlank()){
-                etMobile.error = "Mobile cannot be blank!"
-                check = true
-                Utilities.showShortToast(requireContext(),"Mobile cannot be blank!")
-                return@setOnClickListener
+                etMobile.error = "Mobile no. cannot be blank!"
+                check=true
             } else if (!isPhoneNumberValid(etMobile.text.toString())) {
-                Utilities.showShortToast(requireContext(),"Mobile no. invalid!")
-                return@setOnClickListener
+                etMobile.error = "Mobile no. invalid!"
+                check=true
             }
             if(etEmail.text.isBlank()){
                 etEmail.error = "Email cannot be blank!"
