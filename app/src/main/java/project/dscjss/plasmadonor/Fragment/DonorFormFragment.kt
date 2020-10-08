@@ -3,28 +3,18 @@ package project.dscjss.plasmadonor.Fragment
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.donor_form_fragment.*
-import kotlinx.android.synthetic.main.patient_form_fragment.*
-import kotlinx.android.synthetic.main.patient_form_fragment.btSubmit
-import kotlinx.android.synthetic.main.patient_form_fragment.cbBpProblem
-import kotlinx.android.synthetic.main.patient_form_fragment.cbDiabetes
-import kotlinx.android.synthetic.main.patient_form_fragment.cbLiver
-import kotlinx.android.synthetic.main.patient_form_fragment.etAge
-import kotlinx.android.synthetic.main.patient_form_fragment.etBloodGrp
-import kotlinx.android.synthetic.main.patient_form_fragment.etEmail
-import kotlinx.android.synthetic.main.patient_form_fragment.etGender
-import kotlinx.android.synthetic.main.patient_form_fragment.etLocation
-import kotlinx.android.synthetic.main.patient_form_fragment.etMobile
-import kotlinx.android.synthetic.main.patient_form_fragment.etName
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.Util.Utilities
+import project.dscjss.plasmadonor.Util.isPhoneNumberValid
 import project.dscjss.plasmadonor.ViewModel.DonorFormViewModel
 
 class DonorFormFragment : Fragment() {
@@ -49,6 +39,8 @@ class DonorFormFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         init()
+        setupBloodGroupSpinner()
+        setupGenderSpinner()
         // TODO: Use the ViewModel
 
         btSubmit.setOnClickListener {
@@ -57,17 +49,18 @@ class DonorFormFragment : Fragment() {
                 etName.error = "Name cannot be blank!"
                 check = true
             }
-            if(etBloodGrp.text.isBlank()){
-                etBloodGrp.error = "Blood group cannot be blank!"
-                check = true
+
+            if(spBloodGrp?.selectedItem.toString().equals(getString(R.string.blood_group), true)){
+                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
+                return@setOnClickListener
             }
             if(etAge.text.isBlank()){
                 etAge.error = "Age cannot be blank!"
                 check = true
             }
-            if(etGender.text.isBlank()){
-                etGender.error = "Gender cannot be blank!"
-                check = true
+            if(spGender?.selectedItem.toString().equals(getString(R.string.gender), true)){
+                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
+                return@setOnClickListener
             }
             if(etLocation.text.isBlank()){
                 etLocation.error = "Location cannot be blank!"
@@ -76,6 +69,11 @@ class DonorFormFragment : Fragment() {
             if(etMobile.text.isBlank()){
                 etMobile.error = "Mobile cannot be blank!"
                 check = true
+                Utilities.showShortToast(requireContext(),"Mobile cannot be blank!")
+                return@setOnClickListener
+            } else if (!isPhoneNumberValid(etMobile.text.toString())) {
+                Utilities.showShortToast(requireContext(),"Mobile no. invalid!")
+                return@setOnClickListener
             }
             if(etEmail.text.isBlank()){
                 etEmail.error = "Email cannot be blank!"
@@ -103,24 +101,6 @@ class DonorFormFragment : Fragment() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 etAge.error = null
-            }
-        })
-        etBloodGrp.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {}
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                etBloodGrp.error = null
-            }
-        })
-        etGender.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {}
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                etGender.error = null
             }
         })
         etLocation.addTextChangedListener(object : TextWatcher {
@@ -152,15 +132,31 @@ class DonorFormFragment : Fragment() {
         })
     }
 
+    private fun setupGenderSpinner() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spGender?.adapter = arrayAdapter
+            }
+    }
+
+    private fun setupBloodGroupSpinner() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.blood_group_array, android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spBloodGrp?.adapter = arrayAdapter
+            }
+    }
+
 
     private fun insertData() {
         var donorDetails = HashMap<String, String>()
         donorDetails["Name"] = etName.text.toString()
         donorDetails["Age"] = etAge.text.toString()
-        donorDetails["Gender"] = etGender.text.toString()
+        donorDetails["Gender"] = spGender.selectedItem.toString()
         donorDetails["Location"] = etLocation.text.toString()
         donorDetails["Mobile"] = etMobile.text.toString()
-        donorDetails["BloodGroup"] = etBloodGrp.text.toString()
+        donorDetails["BloodGroup"] = spBloodGrp.selectedItem.toString()
         donorDetails["Diabetes"] = cbDiabetes.isChecked.toString()
         donorDetails["BpProblem"] = cbBpProblem.isChecked.toString()
         donorDetails["LiverProblem"] = cbLiver.isChecked.toString()
@@ -186,10 +182,10 @@ class DonorFormFragment : Fragment() {
 
         etName.setText("")
         etAge.setText("")
-        etGender.setText("")
+        spGender?.setSelection(0)
         etLocation.setText("")
         etMobile.setText("")
-        etBloodGrp.setText("")
+        spBloodGrp?.setSelection(0)
         etEmail.setText("")
         if (cbDiabetes.isChecked) cbDiabetes.isChecked = false
         if (cbBpProblem.isChecked) cbBpProblem.isChecked = false

@@ -26,16 +26,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:inputType="textPersonName"/>
 
-            <EditText
-                android:id="@+id/etBloodGrp"
-                android:hint="Blood Group"
+            <Spinner
+                android:id="@+id/spBloodGrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/blood_group_array"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
 
 
             <EditText
@@ -45,16 +48,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:inputType="number"
+                android:digits="0123456789"/>
 
-            <EditText
-                android:id="@+id/etGender"
-                android:hint="Gender"
+            <Spinner
+                android:id="@+id/spGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:spinnerMode="dropdown"
+                android:entries="@array/gender_array"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined" />
 
             <EditText
                 android:id="@+id/etLocation"
@@ -82,7 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:inputType="phone"
+                android:digits="0123456789+"/>
 
             <EditText
                 android:id="@+id/etEmail"
@@ -91,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp" />
+                android:layout_marginEnd="16dp"
+                android:inputType="textEmailAddress"/>
 
             <CheckBox
                 android:id="@+id/cbDiabetes"

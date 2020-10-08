@@ -1,19 +1,20 @@
 package project.dscjss.plasmadonor.Fragment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.patient_form_fragment.*
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.Util.Utilities
+import project.dscjss.plasmadonor.Util.isPhoneNumberValid
 import project.dscjss.plasmadonor.ViewModel.PatientFormViewModel
 
 class PatientFormFragment : Fragment() {
@@ -38,6 +39,8 @@ class PatientFormFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         init()
+        setupBloodGroupSpinner()
+        setupGenderSpinner()
         // TODO: Use the ViewModel
 
         btSubmit.setOnClickListener {
@@ -46,25 +49,31 @@ class PatientFormFragment : Fragment() {
                 etName.error = "Name cannot be blank!"
                 check = true
             }
-            if(etBloodGrp.text.isBlank()){
-                etBloodGrp.error = "Blood group cannot be blank!"
-                check = true
+
+            if(spBloodGrp?.selectedItem.toString().equals(getString(R.string.blood_group), true)){
+                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
+                return@setOnClickListener
+
             }
             if(etAge.text.isBlank()){
                 etAge.error = "Age cannot be blank!"
                 check = true
             }
-            if(etGender.text.isBlank()){
-                etGender.error = "Gender cannot be blank!"
-                check = true
+
+            if(spGender?.selectedItem.toString().equals(getString(R.string.gender), true)){
+                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
+                return@setOnClickListener
             }
             if(etLocation.text.isBlank()){
                 etLocation.error = "Location cannot be blank!"
                 check = true
             }
-            if(etMobile.text.isBlank()){
-                etMobile.error = "Mobile cannot be blank!"
-                check = true
+            if(etMobile.text.isBlank() || isPhoneNumberValid(etMobile.text.toString())){
+                etMobile.error = "Mobile no. cannot be blank!"
+                return@setOnClickListener
+            } else if (!isPhoneNumberValid(etMobile.text.toString())) {
+                etMobile.error = "Mobile no. invalid!"
+                return@setOnClickListener
             }
             if(etEmail.text.isBlank()){
                 etEmail.error = "Email cannot be blank!"
@@ -97,24 +106,6 @@ class PatientFormFragment : Fragment() {
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 etAge.error = null
-            }
-        })
-        etBloodGrp.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {}
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                etBloodGrp.error = null
-            }
-        })
-        etGender.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {}
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                etGender.error = null
             }
         })
         etLocation.addTextChangedListener(object : TextWatcher {
@@ -156,15 +147,31 @@ class PatientFormFragment : Fragment() {
 
     }
 
+    private fun setupGenderSpinner() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.gender_array, android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spGender?.adapter = arrayAdapter
+            }
+    }
+
+    private fun setupBloodGroupSpinner() {
+        ArrayAdapter.createFromResource(requireContext(), R.array.blood_group_array, android.R.layout.simple_spinner_item)
+            .also { arrayAdapter ->
+                arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spBloodGrp?.adapter = arrayAdapter
+            }
+    }
+
     private fun insertData() {
         var PatientDetails = HashMap<String, String>()
         PatientDetails["Name"] = etName.text.toString()
         PatientDetails["Age"] = etAge.text.toString()
-        PatientDetails["Gender"] = etGender.text.toString()
+        PatientDetails["Gender"] = spGender?.selectedItem.toString()
         PatientDetails["Location"] = etLocation.text.toString()
         PatientDetails["Hospital"] = etHospital.text.toString()
         PatientDetails["Mobile"] = etMobile.text.toString()
-        PatientDetails["BloodGroup"] = etBloodGrp.text.toString()
+        PatientDetails["BloodGroup"] = spBloodGrp?.selectedItem.toString()
         PatientDetails["Diabetes"] = cbDiabetes.isChecked.toString()
         PatientDetails["BpProblem"] = cbBpProblem.isChecked.toString()
         PatientDetails["LiverProblem"] = cbLiver.isChecked.toString()
@@ -190,11 +197,11 @@ class PatientFormFragment : Fragment() {
 
         etName.setText("")
         etAge.setText("")
-        etGender.setText("")
+        spGender?.setSelection(0)
         etHospital.setText("")
         etLocation.setText("")
         etMobile.setText("")
-        etBloodGrp.setText("")
+        spBloodGrp?.setSelection(0)
         etEmail.setText("")
         if (cbDiabetes.isChecked) cbDiabetes.isChecked = false
         if (cbBpProblem.isChecked) cbBpProblem.isChecked = false
