@@ -26,7 +26,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
-                android:hint="Name" />
+                android:hint="Name"
+                android:inputType="textPersonName"/>
 
             <Spinner
                 android:id="@+id/sp_bloodGrp"
@@ -51,7 +52,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
                 android:hint="Age"
-                android:inputType="number" />
+                android:inputType="number"
+                android:digits="0123456789"/>
 
             <Spinner
                 android:id="@+id/sp_gender"
@@ -86,7 +88,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
                 android:hint="Mobile"
-                android:inputType="number" />
+                android:inputType="phone"
+                android:digits="0123456789+"/>
 
             <EditText
                 android:id="@+id/etEmail"
@@ -95,7 +98,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="16dp"
-                android:hint="Email ID" />
+                android:hint="Email ID"
+                android:inputType="textEmailAddress"/>
 
             <CheckBox
                 android:id="@+id/cbDiabetes"
