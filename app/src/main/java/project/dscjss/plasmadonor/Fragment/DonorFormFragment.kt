@@ -54,17 +54,17 @@ class DonorFormFragment : Fragment() {
                 etName.error = "Name cannot be blank!"
                 check = true
             }
-            if(spinnerBloodGrp.selectedItemPosition==0){
-                Utilities.showShortToast(requireContext(),"Blood Group cannot be blank!")
-                return@setOnClickListener
+            if(spinnerBloodGrp?.selectedItem.toString().equals(getString(R.string.blood_group), true)){
+                (spinnerBloodGrp.selectedView as TextView).error = "Select Blood Group"
+                check = true
             }
             if(etAge.text.isBlank()){
                 etAge.error = "Age cannot be blank!"
                 check = true
             }
-            if(spinnerGender.selectedItemPosition==0){
-                Utilities.showShortToast(requireContext(),"Gender cannot be blank!")
-                return@setOnClickListener
+            if(spinnerGender?.selectedItem.toString().equals(getString(R.string.gender), true)){
+                (spinnerGender.selectedView as TextView).error = "Select Gender"
+                check = true
             }
             if(etLocation.text.isBlank()){
                 etLocation.error = "Location cannot be blank!"
