@@ -30,15 +30,19 @@
                 android:inputType="textPersonName"/>
 
             <Spinner
-                android:id="@+id/spBloodGrp"
+                android:id="@+id/sp_bloodGrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:spinnerMode="dropdown"
-                android:entries="@array/blood_group_array"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/colorGray" />
 
 
             <EditText
@@ -53,15 +57,19 @@
                 android:digits="0123456789"/>
 
             <Spinner
-                android:id="@+id/spGender"
+                android:id="@+id/sp_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:spinnerMode="dropdown"
-                android:entries="@array/gender_array"
-                style="@style/Base.Widget.AppCompat.Spinner.Underlined" />
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@color/colorGray" />
 
             <EditText
                 android:id="@+id/etLocation"
