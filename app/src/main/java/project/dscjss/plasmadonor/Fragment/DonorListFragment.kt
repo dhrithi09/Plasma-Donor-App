@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
 import com.firebase.ui.firestore.paging.FirestorePagingOptions
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.donor_list_fragment.*
@@ -42,7 +41,8 @@ class DonorListFragment : Fragment(R.layout.donor_list_fragment) {
         val adapter = DonorListAdapter(
             options,
             onProgress = { progress_circular.isVisible = true },
-            onLoaded = { progress_circular.isVisible = false })
+            onLoaded = { progress_circular.isVisible = false }
+        )
         donorListRecyclerView.adapter = adapter
     }
 }

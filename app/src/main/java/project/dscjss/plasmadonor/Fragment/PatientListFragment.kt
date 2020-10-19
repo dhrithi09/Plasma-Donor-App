@@ -41,7 +41,8 @@ class PatientListFragment : Fragment(R.layout.patient_list_fragment) {
         val adapter = PatientListAdapter(
             options,
             onProgress = { progress_circular.isVisible = true },
-            onLoaded = { progress_circular.isVisible = false })
+            onLoaded = { progress_circular.isVisible = false }
+        )
         patientListRecyclerView.adapter = adapter
     }
 }
