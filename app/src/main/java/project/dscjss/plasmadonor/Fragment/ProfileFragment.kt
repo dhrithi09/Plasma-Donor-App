@@ -30,7 +30,8 @@ class ProfileFragment : Fragment() {
     private lateinit var firebaseFirestore: FirebaseFirestore
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.profile_fragment, container, false)
@@ -39,22 +40,20 @@ class ProfileFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
         init()
 
-        if (firebaseAuth.currentUser == null)  {
-            startActivity(Intent (context, UserLoginActivity::class.java))
-            activity!!.finish()
-        }
-        else {
+        if (firebaseAuth.currentUser == null) {
+            startActivity(Intent(context, UserLoginActivity::class.java))
+            requireActivity().finish()
+        } else {
 
             firebaseFirestore.collection("users")
                 .whereEqualTo("uid", firebaseAuth.currentUser!!.uid)
                 .get()
-                .addOnSuccessListener {doc->
-                    val it = doc.documents[0]
+                .addOnSuccessListener { doc ->
+                    val it = doc.documents.first()
 
-                    tvProfileName.text = "${it["FirstName"].toString()} ${it["LastName"].toString()}"
+                    tvProfileName.text = "${it["FirstName"]} ${it["LastName"]}"
                     tvProfileAge.text = it["Age"].toString()
                     tvBloodGroup.text = it["BloodGroup"].toString()
                     tvProfileWeight.text = it["Weight"].toString()
@@ -62,29 +61,25 @@ class ProfileFragment : Fragment() {
                     tvProfileMobile.text = it["Phone"].toString()
                     tvProfileEmail.text = it["Email"].toString()
                     tvProfileLocation.text = it["Location"].toString()
-
                 }
                 .addOnFailureListener {
 
-                    Utilities.showShortToast(context!! , "Something went wrong fetching user details")
+                    Utilities.showShortToast(requireContext(), "Something went wrong fetching user details")
 
                     Log.e(TAG, it.message.toString())
                 }
         }
-
     }
 
-    private fun init(){
+    private fun init() {
 
         fragmentChangeInterface = context as FragmentChangeInterface
         viewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseFirestore = FirebaseFirestore.getInstance()
 
-        buttonProfileEdit.setOnClickListener{
+        buttonProfileEdit.setOnClickListener {
             fragmentChangeInterface.changeFragment(EditProfileFragment())
         }
-
     }
-
 }
