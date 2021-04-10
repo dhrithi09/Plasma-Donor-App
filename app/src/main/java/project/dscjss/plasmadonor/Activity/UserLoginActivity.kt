@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import project.dscjss.plasmadonor.Fragment.LoadingFragment
-import project.dscjss.plasmadonor.Fragment.LoginFragment
+import project.dscjss.plasmadonor.Fragment.SignUpBegFragment
 import project.dscjss.plasmadonor.R
 import project.dscjss.plasmadonor.interfaces.FragmentChangeInterface
 
@@ -16,8 +16,9 @@ class UserLoginActivity : AppCompatActivity(), FragmentChangeInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_login)
-
-        val fragment = LoginFragment()
+        supportActionBar!!.hide()
+        // changed the loginFragment() to SignUpBegFragment
+        val fragment = SignUpBegFragment()
         supportFragmentManager.beginTransaction()
             .add(R.id.loginFrame, fragment).commit()
     }
