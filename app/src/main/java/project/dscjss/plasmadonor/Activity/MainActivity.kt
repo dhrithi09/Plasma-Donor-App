@@ -134,6 +134,10 @@ class MainActivity :
                 topAppBar.title = "Add Patient"
                 initiate(PatientFormFragment())
             }
+            R.id.searchTwitter -> {
+                topAppBar.title = "Get Help from Twitter"
+                initiate(TwitterSearchFragment())
+            }
             R.id.profile -> {
                 topAppBar.title = "Profile"
                 initiate(ProfileFragment())
