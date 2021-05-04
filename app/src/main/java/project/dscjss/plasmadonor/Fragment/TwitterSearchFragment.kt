@@ -36,7 +36,8 @@ class TwitterSearchFragment : Fragment(), View.OnClickListener {
     private var verify: String = "\"not%20verified\"%20-\"unverified\"%20-"
     var url = "https://twitter.com/search?q=verified%20"
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment

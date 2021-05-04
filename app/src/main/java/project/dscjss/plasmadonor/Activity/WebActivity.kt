@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_web.*
 import project.dscjss.plasmadonor.R
 
-
 class WebActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +17,7 @@ class WebActivity : AppCompatActivity() {
         webView.loadUrl(url!!)
         val webSetting = webView.settings
         webSetting.javaScriptEnabled = true
-        webView.scrollBarStyle = WebView.SCROLLBARS_OUTSIDE_INSET;
+        webView.scrollBarStyle = WebView.SCROLLBARS_OUTSIDE_INSET
     }
 
     override fun onBackPressed() {

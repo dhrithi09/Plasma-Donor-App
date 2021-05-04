@@ -29,22 +29,17 @@ class MainActivity :
     FragmentChangeInterface,
     NavigationView.OnNavigationItemSelectedListener,
     OnBackPressInterface {
-
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var detail: ProfileDetail? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         init()
         ProfileDetailFetch()
-
         supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrame, FeedsFragment())
             .commit()
-
         val fabSpeedDial = findViewById<FabSpeedDial>(R.id.fab_speed_dial)
         fabSpeedDial.setMenuListener(object : SimpleMenuListenerAdapter() {
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
@@ -86,7 +81,6 @@ class MainActivity :
         val toggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-
         initiate(FeedsFragment())
     }
 
