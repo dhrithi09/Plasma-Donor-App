@@ -157,8 +157,9 @@ class TwitterSearchFragment : Fragment(), View.OnClickListener {
 
     private fun urlParse(city: String) {
         url = "https://twitter.com/search?q=verified%20"
-        url =
-            "$url$city%20(plasma)%20-$verify\"needed\"%20-\"need\"%20-\"needs\"%20-\"required\"%20-\"require\"%20-\"requires\"%20-\"requirement\"%20-\"requirements\"&f=live"
+        url = "$url$city%20(plasma)%20-$verify\"needed\"%20-\"need\"%20-\"needs\""
+        val url2 = "%20-\"required\"%20-\"require\"%20-\"requires\"%20-\"requirement\"%20-\"requirements\"&f=live"
+        url = "$url$url2"
         val intent = Intent(requireContext(), WebActivity::class.java)
         intent.putExtra("urlLink", url)
         startActivity(intent)
