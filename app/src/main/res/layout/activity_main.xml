@@ -23,6 +23,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_marginBottom="60dp"
                 android:layout_height="match_parent">
 
                 <com.google.android.material.appbar.AppBarLayout
@@ -38,11 +39,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="?attr/actionBarSize"
                         android:background="@color/colorPrimary"
-                        app:titleTextColor="#ffffff"
                         android:elevation="0dp"
-                        app:subtitleTextColor="#ffffff"
                         app:navigationIcon="@drawable/ic_menu_24"
-                        app:title="Home" />
+                        app:subtitleTextColor="#ffffff"
+                        app:title="Home"
+                        app:titleTextColor="#ffffff" />
                 </com.google.android.material.appbar.AppBarLayout>
 
                 <FrameLayout
@@ -50,6 +51,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/appBarLayout" />
+
             </RelativeLayout>
 
             <io.github.yavski.fabspeeddial.FabSpeedDial
@@ -57,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
+                android:layout_marginBottom="50dp"
                 app:fabBackgroundTint="@color/colorPrimary"
                 app:fabGravity="bottom_end"
                 app:fabMenu="@menu/fab_menu"
@@ -64,6 +67,25 @@
                 app:miniFabDrawableTint="@color/colorPrimaryDark"
                 app:miniFabTitleTextColor="@color/colorPrimaryDark" />
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#eeffff"
+            android:layout_gravity="bottom">
+
+            <com.ismaeldivita.chipnavigation.ChipNavigationBar
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:padding="2dp"
+                app:cnb_badgeColor="@color/black"
+                app:cnb_iconSize="30dp"
+                app:cnb_menuResource="@menu/bottom_navigation"
+                app:cnb_unselectedColor="@color/black" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
     </FrameLayout>
 
