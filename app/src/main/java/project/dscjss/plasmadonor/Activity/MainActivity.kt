@@ -3,8 +3,6 @@ package project.dscjss.plasmadonor.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -14,8 +12,6 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import io.github.yavski.fabspeeddial.FabSpeedDial
-import io.github.yavski.fabspeeddial.SimpleMenuListenerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import project.dscjss.plasmadonor.AboutFragment
 import project.dscjss.plasmadonor.Fragment.*
@@ -40,14 +36,28 @@ class MainActivity :
         supportFragmentManager.beginTransaction()
             .replace(R.id.mainFrame, FeedsFragment())
             .commit()
-        val fabSpeedDial = findViewById<FabSpeedDial>(R.id.fab_speed_dial)
-        fabSpeedDial.setMenuListener(object : SimpleMenuListenerAdapter() {
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                // TODO: Start some activity
-                onNavigationItemSelected(menuItem)
-                return true
+        bottom_navigation.setOnNavigationItemSelectedListener {
+            lateinit var fragment: Fragment
+            when (it.itemId) {
+                R.id.btHome -> {
+                    fragment = FeedsFragment()
+                    initiate(fragment)
+                }
+                R.id.btSearch -> {
+                    fragment = SearchFragment()
+                    initiate(fragment)
+                }
+                R.id.btMessage -> {
+                    fragment = MessageFragment()
+                    initiate(fragment)
+                }
+                R.id.btProfile -> {
+                    fragment = ProfileFragment()
+                    initiate(fragment)
+                }
             }
-        })
+            true
+        }
     }
 
     private fun ProfileDetailFetch() {
@@ -97,7 +107,6 @@ class MainActivity :
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        fab_speed_dial.visibility = GONE
         when (item.itemId) {
             R.id.add_donor -> {
                 topAppBar.title = "Add Donor"
@@ -108,7 +117,6 @@ class MainActivity :
                 initiate(PatientFormFragment())
             }
             R.id.home -> {
-                fab_speed_dial.visibility = VISIBLE
                 topAppBar.title = "Home"
                 initiate(FeedsFragment())
             }
