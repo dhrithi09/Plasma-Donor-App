@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
@@ -29,7 +30,7 @@ class TwitterSearchFragment : Fragment(), View.OnClickListener {
     lateinit var mdGoa: MaterialCardView
     lateinit var cvCityName: MaterialCardView
     lateinit var btnSearchCities: MaterialButton
-    lateinit var btnSearch: MaterialButton
+    lateinit var btnSearch: ImageView
     lateinit var etCityName: EditText
     lateinit var switch: SwitchCompat
     lateinit var city: String
@@ -69,7 +70,6 @@ class TwitterSearchFragment : Fragment(), View.OnClickListener {
         mdLucknow.setOnClickListener(this)
         mdChennai.setOnClickListener(this)
         mdGoa.setOnClickListener(this)
-        btnSearchCities.setOnClickListener(this)
         btnSearch.setOnClickListener(this)
     }
 
@@ -88,7 +88,6 @@ class TwitterSearchFragment : Fragment(), View.OnClickListener {
         mdGoa = view.findViewById(R.id.mdGoa)
         switch = view.findViewById(R.id.swVerification)
         cvCityName = view.findViewById(R.id.cvCityName)
-        btnSearchCities = view.findViewById(R.id.btnSearchCities)
         btnSearch = view.findViewById(R.id.btnSearch)
         etCityName = view.findViewById(R.id.etCityName)
     }
@@ -143,10 +142,6 @@ class TwitterSearchFragment : Fragment(), View.OnClickListener {
             R.id.mdGoa -> {
                 city = "goa"
                 urlParse(city)
-            }
-            R.id.btnSearchCities -> {
-                cvCityName.visibility = View.VISIBLE
-                btnSearch.visibility = View.VISIBLE
             }
             R.id.btnSearch -> {
                 city = etCityName.text.toString()

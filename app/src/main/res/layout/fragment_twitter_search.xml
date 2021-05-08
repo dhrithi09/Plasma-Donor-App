@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#40e1f5fe">
 
     <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -9,23 +10,58 @@
         android:layout_height="match_parent"
         tools:context=".Fragment.TwitterSearchFragment">
 
-        <TextView
-            android:id="@+id/txtCities"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="cursive"
-            android:text="Cities"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="40sp"
-            android:textStyle="bold" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvCityName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:backgroundTint="#ffffff"
+            android:visibility="visible"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp"
+            app:strokeColor="@android:color/darker_gray"
+            app:strokeWidth="1dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/btnSearch"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/search" />
+
+                <EditText
+                    android:id="@+id/etCityName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toStartOf="@+id/btnSearch"
+                    android:background="@null"
+                    android:hint="Search your city name"
+                    android:inputType="text"
+                    android:textAlignment="textStart"
+                    android:textColor="#000000"
+                    android:textColorHint="#60000000"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.SwitchCompat
             android:id="@+id/swVerification"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/txtCities"
+            android:layout_below="@+id/cvCityName"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
@@ -51,7 +87,8 @@
                     android:id="@+id/mdKolkata"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -92,7 +129,8 @@
                     android:id="@+id/mdDelhi"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -133,7 +171,8 @@
                     android:id="@+id/mdPune"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -174,7 +213,8 @@
                     android:id="@+id/mdMumbai"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -219,7 +259,9 @@
                     android:id="@+id/mdBangalore"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -259,7 +301,9 @@
                     android:id="@+id/mdThane"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -299,7 +343,9 @@
                     android:id="@+id/mdHyderbad"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -339,7 +385,9 @@
                     android:id="@+id/mdNagpur"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -384,7 +432,9 @@
                     android:id="@+id/mdLucknow"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -424,7 +474,9 @@
                     android:id="@+id/mdAhmedabad"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -464,7 +516,9 @@
                     android:id="@+id/mdChennai"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -505,7 +559,9 @@
                     android:id="@+id/mdGoa"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="1dp"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="2.5dp"
                     android:layout_weight="1"
                     android:background="?android:attr/selectableItemBackground"
                     android:clickable="true"
@@ -542,113 +598,5 @@
                 </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/llOR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/llCities"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="20dp">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0.1dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@android:color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="   OR   "
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0.1dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@android:color/black" />
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSearchCities"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/llOR"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="60dp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:text="Search for Other Cities"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:cornerRadius="10dp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvCityName"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/btnSearchCities"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="60dp"
-            android:backgroundTint="#d3d3d3"
-            android:visibility="gone"
-            app:cardCornerRadius="25dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imgEmail"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:src="@drawable/city" />
-
-                <EditText
-                    android:id="@+id/etCityName"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="5dp"
-                    android:layout_toRightOf="@+id/imgEmail"
-                    android:background="@null"
-                    android:hint="Enter City Name"
-                    android:inputType="text"
-                    android:textAlignment="textStart"
-                    android:textColor="#000000"
-                    android:textColorHint="#60000000"
-                    android:textSize="15sp" />
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSearch"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/cvCityName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="60dp"
-            android:backgroundTint="@color/colorPrimaryDark"
-            android:text="Search"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            app:cornerRadius="10dp" />
     </RelativeLayout>
 </ScrollView>
