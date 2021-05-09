@@ -11,6 +11,8 @@
          android:title="Add Donor"/>
     <item android:id="@+id/addPatient"
          android:title="Add Patient"/>
+    <item android:id="@+id/searchTwitter"
+        android:title="Help from Twitter"/>
     <item android:id="@+id/profile"
          android:title="Profile"/>
     <item android:id="@+id/faq"
@@ -19,5 +21,4 @@
          android:title="About Us"/>
     <item android:id="@+id/logout"
          android:title="Log Out"/>
-
 </menu>

@@ -25,7 +25,6 @@ class MainActivity :
     FragmentChangeInterface,
     NavigationView.OnNavigationItemSelectedListener,
     OnBackPressInterface {
-
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var detail: ProfileDetail? = null
@@ -92,7 +91,6 @@ class MainActivity :
         val toggle = ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-
         initiate(FeedsFragment())
     }
 
@@ -137,6 +135,10 @@ class MainActivity :
             R.id.addPatient -> {
                 topAppBar.title = "Add Patient"
                 initiate(PatientFormFragment())
+            }
+            R.id.searchTwitter -> {
+                topAppBar.title = "Get Help from Twitter"
+                initiate(TwitterSearchFragment())
             }
             R.id.profile -> {
                 topAppBar.title = "Profile"
